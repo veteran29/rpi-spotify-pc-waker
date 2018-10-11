@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import os
 import subprocess
 import datetime
 import json
@@ -8,8 +8,13 @@ from wakeonlan import send_magic_packet
 # Local module which will start the music on target PC
 import spotify_play
 
+# Move to script path
+script_path = os.path.dirname(__file__)
+if script_path != "":
+	os.chdir(script_path)
+
 with open('settings.json') as f:
-        config = json.load(f)["checker"]
+		config = json.load(f)["checker"]
 
 start_time = datetime.time(16,30)
 end_time = datetime.time(19,25)
