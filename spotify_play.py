@@ -32,26 +32,26 @@ def play_music():
 		sp = spotipy.Spotify(auth=token)
 		playlists = sp.current_user_playlists()
 	
-	# Some time for spotify client to initialize
-	sleep(15)
-	print("Starting playback...")
-
-	try:
-		play_on_target(config["target-player"], config["target-music"], True, 30)
-	except:
-		print("Error while trying to play music")
-		print("Wait 15s and try again")
+		# Some time for spotify client to initialize
 		sleep(15)
-		# Try again
+		print("Starting playback...")
+
 		try:
 			play_on_target(config["target-player"], config["target-music"], True, 30)
-		except:
-			print("Playback failed ;-(\nExiting.")
-			exit()
+		except BaseException as e:
+			print(e)
+			print("Error while trying to play music")
+			print("Wait 15s and try again")
+			sleep(15)
+			# Try again
+			try:
+				play_on_target(config["target-player"], config["target-music"], True, 30)
+			except:
+				print("Playback failed ;-(\nExiting.")
+				exit()
 
 		playing_info = sp.current_user_playing_track()
 		print("Track: %s" % playing_info["item"]["name"])
-
 
 	else:
 		print("Can't get token for", config["username"])
