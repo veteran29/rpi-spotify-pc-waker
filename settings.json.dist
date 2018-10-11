@@ -5,7 +5,8 @@
         "client-secret": "<your_app_client_id>",
         "redirect-uri": "http://localhost/<app_redirect_url_can_be_whatever>",
         "scopes": "user-read-playback-state user-modify-playback-state",
-        "target-player": "<playback_target_device_id>"
+        "target-player": "<playback_target_device_id>",
+        "target-music": "spotify:playlist:148My4xA7WoEaNDmnl2A8Z"
     },
     "checker": {
         "trigger-host": "<host_that_triggers_wakeup>",
