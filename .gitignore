@@ -1,0 +1,8 @@
+# Credentials cache file
+.cache-*
+
+# Settings file
+settings.json
+
+# Python stuff
+__pycache__/
