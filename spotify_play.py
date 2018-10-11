@@ -30,14 +30,13 @@ def play_music():
 	if token:
 		global sp
 		sp = spotipy.Spotify(auth=token)
-		playlists = sp.current_user_playlists()
 	
 		# Some time for spotify client to initialize
 		sleep(15)
 		print("Starting playback...")
 
 		try:
-			play_on_target(config["target-player"], config["target-music"], True, 30)
+			play_on_target(config["target-player"], config["target-music"], config["shuffle"], config["volume"])
 		except BaseException as e:
 			print(e)
 			print("Error while trying to play music")
@@ -45,7 +44,7 @@ def play_music():
 			sleep(15)
 			# Try again
 			try:
-				play_on_target(config["target-player"], config["target-music"], True, 30)
+				play_on_target(config["target-player"], config["target-music"], config["shuffle"], config["volume"])
 			except:
 				print("Playback failed ;-(\nExiting.")
 				exit()
